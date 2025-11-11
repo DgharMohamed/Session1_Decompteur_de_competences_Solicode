@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My Book Library</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Book Library</h1>
+            <p>Manage your book collection</p>
+        </header>
+
+        <div class="library-controls">
+            <div class="search-container">
+                <input type="search" id="searchInput" placeholder="Search by title or author...">
+            </div>
+        </div>
+
+        <div class="library-btn">
+            <button id="addBookBtn">Add New Book</button>
+        </div>
+
+        <div class="book-grid" id="bookGrid">
+
+
+        </div>
+    </div>
+
+    <div class="modal" id="addBookModal">
+        <div class="modal-content">
+            <h2>Add New Book</h2>
+            <form id="bookForm">
+                <div class="form-group">
+                    <label for="bookTitle">Book Title</label>
+                    <input type="text" id="bookTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookAuthor">Author</label>
+                    <input type="text" id="bookAuthor" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookImage">Image URL</label>
+                    <input type="text" id="bookImage" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookStatus">Status</label>
+                    <select id="bookStatus" required>
+                        <option value="available">Available</option>
+                        <option value="unavailable">Unavailable</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bookPrice">Book Price</label>
+                    <input type="text" id="bookPrice" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="save-btn">Save Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
