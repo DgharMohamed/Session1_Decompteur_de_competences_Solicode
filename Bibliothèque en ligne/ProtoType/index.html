@@ -12,19 +12,14 @@
             <h1>My Book Library</h1>
             <p>Manage your book collection</p>
         </header>
-
-        <div class="library-controls">
-            <div class="search-container">
-                <input type="search" id="searchInput" placeholder="Search by title or author...">
-            </div>
+        <div class="search-container">
+            <input type="text" id="searchBar" class="search-bar" placeholder="Search by title or author...">
         </div>
-
         <div class="library-btn">
             <button id="addBookBtn">Add New Book</button>
         </div>
 
         <div class="book-grid" id="bookGrid">
-
 
         </div>
     </div>
@@ -63,7 +58,16 @@
             </form>
         </div>
     </div>
-
+    <div class="stats-panel">
+        <div class="stat-item">
+            <span class="stat-label">Total Books : </span>
+            <span class="stat-value" id="statsTotalBooks">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Available : </span>
+            <span class="stat-value text-success" id="statsAvailable">0</span>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
