@@ -20,6 +20,12 @@ cancelBtn.addEventListener('click', () => {
 });
 
 bookForm.addEventListener('submit', (e) => {
+    const priceInput = document.getElementById('bookPrice');
+    if (priceInput.value < 0 || isNaN(priceInput.value)) {
+        alert('Please enter a valid non-negative number for the price.');
+        e.preventDefault();
+        return;
+    }           
     e.preventDefault();
     addBook();
 });
@@ -89,13 +95,35 @@ function addBook() {
     books.push(newBook);
     addBookModal.style.display = 'none';
     bookForm.reset();
-    displayBooks();
+        const bookCard = document.createElement('div');
+        bookCard.className = 'book-card';
+        bookCard.id = `${newBook.id}`;
+        bookCard.innerHTML = `
+            <img src="${newBook.image}" alt="${newBook.title}" class="book-image" ">
+            <div class="book-info">
+                <div class="book-title">${newBook.title}</div>
+                <div class="book-author">by: ${newBook.author}</div>
+                <span class="book-status ${newBook.status}">
+                    ${newBook.status === 'available' ? 'Available' : 'Unavailable'}
+                </span>
+                <div class="book-price">Price: ${parseFloat(newBook.price).toFixed(2)} DH</div>
+            </div>
+            <div class="book-actions">
+                <button class="remove-btn" data-id="${newBook.id}" onClick="removeBook(${newBook.id})">Remove Book</button>
+            </div>
+        `;
+        bookGrid.appendChild(bookCard);
+        console.log(bookCard);
+        updateStats();
 }
 
 function removeBook(id) {
     if (confirm('Are you sure you want to remove this book?')) {
-        books = books.filter(book => book.id !== id);
-        displayBooks();
+        books = books.filter(newBook => newBook.id !== id);
+        let bookCard = document.getElementById(`${id}`);
+        console.log(bookCard);
+        bookGrid.removeChild(bookCard);
+        updateStats();
     }
 }
 
